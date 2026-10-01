@@ -1,7 +1,7 @@
 [project]
 name = "copilot"
 version = "0.1.0"
-description = "Copiloto conversacional de finanzas personales y nutrición (LangChain/LangGraph)."
+description = "Copiloto conversacional de finanzas personales y nutrición."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
@@ -20,8 +20,6 @@ build-backend = "uv_build"
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-# Referencia histórica del proyecto anterior: se conserva tal cual, no se formatea.
-extend-exclude = ["docs/arquitectura_solucion.md", "docs/anexo_arquitectura_objetivo.md"]
 
 [tool.ruff.lint]
 select = [
