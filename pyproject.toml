@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Copiloto conversacional de finanzas personales y nutrición."
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pydantic-settings>=2.15.0",
+]
 
 [dependency-groups]
 dev = [
@@ -39,6 +41,7 @@ select = [
 python_version = "3.12"
 strict = true
 files = ["src", "tests"]
+plugins = ["pydantic.mypy"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

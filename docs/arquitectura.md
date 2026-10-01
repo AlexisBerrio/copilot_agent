@@ -11,7 +11,7 @@
 | `prompt_proyecto_langchain_finanzas_nutricion.md` | ¿Qué se pide construir y con qué reglas de trabajo? |
 | Este documento | ¿Cómo se construye y por qué se tomó cada decisión? |
 | `plan_fases.md` | ¿En qué orden, con qué ítems, y con qué evidencia de que están hechos? **Fuente de verdad del estado.** |
-| `arquitectura_solucion.md`, `anexo_arquitectura_objetivo.md` | Referencia histórica del proyecto anterior (`personal_assistant_agent`). No describen este repo. |
+| *(retirados del repo en `0e18354`)* `arquitectura_solucion.md`, `anexo_arquitectura_objetivo.md` | Referencia histórica del proyecto anterior (`personal_assistant_agent`); consultables en el historial de git (`git show 7972e13:docs/<archivo>`). |
 
 Cuando un componente todavía no existe se marca *(objetivo, Fase N)*. Si algo diverge entre este documento
 y `plan_fases.md`, gana `plan_fases.md`.
