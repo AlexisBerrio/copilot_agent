@@ -8,9 +8,46 @@ dependencies = []
 
 [dependency-groups]
 dev = [
+    "mypy>=2.3.1",
     "pytest>=8.3",
+    "ruff>=0.16.10",
 ]
 
 [build-system]
 requires = ["uv_build>=0.8.17,<0.9.0"]
 build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+# Referencia histórica del proyecto anterior: se conserva tal cual, no se formatea.
+extend-exclude = ["docs/arquitectura_solucion.md", "docs/anexo_arquitectura_objetivo.md"]
+
+[tool.ruff.lint]
+select = [
+    "E", "W",  # pycodestyle
+    "F",       # pyflakes
+    "I",       # orden de imports
+    "UP",      # sintaxis moderna de Python
+    "B",       # bugbear: errores probables
+    "SIM",     # simplificaciones
+    "N",       # nombres PEP 8
+    "ASYNC",   # errores comunes en código async
+    "PT",      # estilo de pytest
+    "RUF",     # reglas propias de ruff
+]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# importlib: los tests importan el paquete instalado, nunca la raíz del repo por sys.path.
+addopts = ["-ra", "--strict-markers", "--strict-config", "--import-mode=importlib", "-m", "not eval"]
+markers = [
+    "integration: requiere Mongo real (docker compose up -d mongo)",
+    "eval: usa un LLM real y consume tokens; solo bajo demanda con `pytest -m eval`",
+]
+xfail_strict = true
