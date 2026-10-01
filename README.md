@@ -8,8 +8,9 @@ proyecto de aprendizaje incremental.
 Requiere [`uv`](https://docs.astral.sh/uv/). El intérprete (Python 3.12.3) lo fija `.python-version`.
 
 ```bash
-uv sync          # crea .venv e instala dependencias exactas de uv.lock
-uv run pytest                # unitarios + integración (los evals con LLM quedan fuera)
+cp .env.example .env    # y ajustar valores
+uv sync                 # crea .venv e instala dependencias exactas de uv.lock
+uv run pytest           # unitarios + integración (los evals con LLM quedan fuera)
 uv run ruff check . && uv run ruff format --check . && uv run mypy
 ```
 
