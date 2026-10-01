@@ -29,7 +29,7 @@ Niveles: 🟢 higiene inmediata · 🟡 industrialización esperable · 🔴 van
 
 | Fase | Tema | Conceptos principales | Estado |
 | --- | --- | --- | --- |
-| 0 | Esqueleto | `uv`, `pyproject`, `ruff`/`mypy`, `Settings`, `structlog`, Mongo async, CI | ⬜ |
+| 0 | Esqueleto | `uv`, `pyproject`, `ruff`/`mypy`, `Settings`, `structlog`, Mongo async, CI | 🔄 |
 | 1 | LangChain sin grafo | chat models, mensajes, prompts, salida estructurada, `@tool`, tool calling manual | ⬜ |
 | 2 | Primer grafo | `StateGraph`, estado/reducers, nodos, edges, `ToolNode`, ReAct a mano → `create_agent`, streaming, LangSmith, Studio | ⬜ |
 | 3 | Memoria y persistencia | checkpointer, `thread_id`, historial de estado, store de largo plazo, resumen | ⬜ |
@@ -50,7 +50,7 @@ nace con ello y se evitan los fallos silenciosos (bridging, drift de dependencia
 
 | # | Ítem | Nivel | Estado | Evidencia |
 | --- | --- | --- | --- | --- |
-| 0.1 | `pyproject.toml` + `uv.lock` + layout `src/`; decidir nombre del paquete (propuesta: `copilot`) y versión mínima de Python | 🟢 | ⬜ | |
+| 0.1 | `pyproject.toml` + `uv.lock` + layout `src/`; decidir nombre del paquete (propuesta: `copilot`) y versión mínima de Python | 🟢 | ✅ | Paquete `copilot` en `src/copilot/` (con `py.typed`); backend `uv_build`; `requires-python = ">=3.12"` y `.python-version` fijado en `3.12.3` (piso de compatibilidad vs. intérprete exacto de desarrollo). Sin dependencias de runtime; `pytest` en `[dependency-groups].dev` (PEP 735, no extras publicados). Verificado con `rm -rf .venv && uv sync --locked && uv run pytest` → 2 passed sobre Python 3.12.3 (`tests/test_package.py`: versión instalada y import desde `src/`); `uv lock --check` limpio |
 | 0.2 | `ruff` (lint + format) y `mypy --strict` en todo el repo; configuración de `pytest` con marcadores `integration`/`eval` | 🟢 | ⬜ | |
 | 0.3 | `Settings` único (`pydantic-settings`, `SecretStr`), falla ruidosa si falta configuración; `.env.example` con comentario por variable | 🟢 | ⬜ | |
 | 0.4 | `structlog` en JSON **a stderr**; `request_id` por contextvars en middleware ASGI puro | 🟢 | ⬜ | |

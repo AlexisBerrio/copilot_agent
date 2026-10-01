@@ -3,6 +3,15 @@
 Copiloto conversacional de finanzas personales y nutrición, construido con LangChain y LangGraph como
 proyecto de aprendizaje incremental.
 
+## Arranque
+
+Requiere [`uv`](https://docs.astral.sh/uv/). El intérprete (Python 3.12.3) lo fija `.python-version`.
+
+```bash
+uv sync          # crea .venv e instala dependencias exactas de uv.lock
+uv run pytest
+```
+
 ## Documentación
 
 - [`docs/arquitectura.md`](docs/arquitectura.md) — arquitectura y decisiones (ADR).
